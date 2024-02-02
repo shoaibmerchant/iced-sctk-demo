@@ -1,7 +1,13 @@
 [package]
 name = "iced_sctk_demo"
-version = "0.0.1"
+version = "0.1.0"
+description = "simple sctk"
 edition = "2021"
+authors = ["Akshay Raina <akshayr@mechasystems.com", "Shoaib Merchant <shoaibm@mechasystems.com>"]
+documentation = "https://docs.mecha.so"
+license = "MIT"
+repository = "https://github.com/akshayr-mecha/iced-sctk-demo2"
+homepage = "https://mecha.so"
 
 [dependencies]
 smithay-client-toolkit = "0.18.0"
