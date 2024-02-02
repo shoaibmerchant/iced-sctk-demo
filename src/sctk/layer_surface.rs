@@ -266,7 +266,7 @@ impl LayerSurfaceContainer {
             &device,
             &queue,
             iced_wgpu::Settings {
-                present_mode: wgpu::PresentMode::Mailbox,
+                present_mode: wgpu::PresentMode::Fifo,
                 internal_backend: Backends::GL | Backends::VULKAN,
                 ..Default::default()
             },
@@ -350,13 +350,14 @@ impl LayerSurfaceContainer {
 
     pub fn configure_wgpu_surface(&self, device: &wgpu::Device) {
         let capabilities = &self.capabilities;
+        println!("capabilities {:?}", capabilities);
         let surface_config = wgpu::SurfaceConfiguration {
             usage: wgpu::TextureUsages::RENDER_ATTACHMENT,
             format: capabilities.formats[0],
             width: self.width,
             height: self.height,
-            present_mode: wgpu::PresentMode::Mailbox,
-            alpha_mode: wgpu::CompositeAlphaMode::Auto,
+            present_mode: wgpu::PresentMode::Fifo,
+            alpha_mode: capabilities.alpha_modes[0],
             view_formats: vec![capabilities.formats[0]],
         };
 
